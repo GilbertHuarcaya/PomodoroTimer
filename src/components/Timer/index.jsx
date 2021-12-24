@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Countdown from 'react-countdown';
+import swal from 'sweetalert';
 import { useStateCompleted } from '../../Context';
 import Gear from '../../images/gear.svg';
 import Check from '../../images/check.svg';
@@ -46,8 +47,7 @@ const Timer = () => {
     time.secs = 0;
     setCompleted(true);
     setTimeout(() => {
-      // eslint-disable-next-line no-alert
-      alert('Completed!');
+      swal('COMPLETED!');
     }, 100);
   };
 
@@ -59,7 +59,12 @@ const Timer = () => {
             <input
               type="number"
               name="mins"
-              defaultValue={time.mins < 10 ? `0${time.mins}` : time.mins}
+              placeholder={`0${0}`}
+              value={
+                time.mins < 10
+                  ? `0${time.mins === 0 ? null : time.mins}`
+                  : time.mins
+              }
               onChange={handleChange}
               disabled={!onConfig}
               min="0"
@@ -71,7 +76,12 @@ const Timer = () => {
             <input
               type="number"
               name="secs"
-              defaultValue={time.secs < 10 ? `0${time.secs}` : time.secs}
+              placeholder={`0${0}`}
+              value={
+                time.secs < 10
+                  ? `0${time.secs === 0 ? null : time.secs}`
+                  : time.secs
+              }
               onChange={handleChange}
               disabled={!onConfig}
               min="0"
