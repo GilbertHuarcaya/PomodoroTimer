@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Countdown from 'react-countdown';
+import swal from 'sweetalert';
 import { useStateCompleted } from '../../Context';
 import Gear from '../../images/gear.svg';
 import Check from '../../images/check.svg';
@@ -46,8 +47,7 @@ const Timer = () => {
     time.secs = 0;
     setCompleted(true);
     setTimeout(() => {
-      // eslint-disable-next-line no-alert
-      alert('Completed!');
+      swal('COMPLETED!');
     }, 100);
   };
 
